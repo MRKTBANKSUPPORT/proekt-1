@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Финансист — автоматизация и бухгалтерия в Мариуполе</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --card: #ffffff;
+      --text: #1c1917;
+      --muted: #57534e;
+      --accent: #0c4a6e;
+      --accent-hover: #075985;
+      --border: #e7e5e4;
+      --soft: #f5f5f4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.925rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 88px 0 72px;
+    }
+
+    .hero-content {
+      max-width: 640px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: #e0f2fe;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: white;
+      padding: 13px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      margin-left: 12px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--soft);
+      border-color: #d6d3d1;
+    }
+
+    .services {
+      padding: 64px 0 80px;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .service-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.08);
+    }
+
+    .service-card .num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #a8a29e;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p {
+      font-size: 0.925rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .about {
+      padding: 72px 0;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .about ul {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .about li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 12px;
+      color: var(--text);
+      font-size: 0.975rem;
+    }
+
+    .about li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .about-note {
+      background: var(--soft);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-top: 28px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      border-left: 3px solid var(--accent);
+    }
+
+    .contact {
+      padding: 80px 0;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+
+    .contact > .contact-box > div > p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-item span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #a8a29e;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-item a,
+    .contact-item strong {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.875rem;
+      color: #a8a29e;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none;
+      }
+      .hero {
+        padding: 64px 0 48px;
+      }
+      .contact-box {
+        padding: 32px 24px;
+      }
+      .btn-secondary {
+        margin-left: 0;
+        margin-top: 12px;
+      }
+      .hero .btn,
+      .hero .btn-secondary {
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">Финансист<span>.</span></div>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#about">О компании</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">Мариуполь · СБИС · 1С</div>
+      <h1>Автоматизация бизнеса и бухгалтерия без головной боли</h1>
+      <p>Помогаем магазинам, кафе, салонам и другим компаниям настроить учёт, подключить кассы и сдать отчётность.</p>
+      <div>
+        <a href="tel:+79497022181" class="btn">Позвонить</a>
+        <a href="#services" class="btn btn-secondary">Смотреть услуги</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <h2>Чем занимаемся</h2>
+      <p>Основные направления работы</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="num">01</div>
+        <h3>Внедрение 1С и СБИС</h3>
+        <p>Настройка программ, обучение сотрудников и дальнейшая поддержка. Работаем с магазинами, общепитом и сферой услуг.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">02</div>
+        <h3>Бухгалтерское обслуживание</h3>
+        <p>Ведение учёта под ключ, подготовка и сдача отчётности в налоговую, фонды и статистику.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">03</div>
+        <h3>Кассы и оборудование</h3>
+        <p>Подбор и подключение ККТ, фискальных накопителей, ОФД, сканеров и весов. Настройка ЕГАИС и Честного Знака.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">04</div>
+        <h3>Регистрация ИП и ООО</h3>
+        <p>Полное сопровождение при открытии или закрытии бизнеса. Готовим документы и сдаём их за вас.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">05</div>
+        <h3>Алко-лицензии</h3>
+        <p>Помощь в получении лицензии на розничную продажу алкогольной продукции.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">06</div>
+        <h3>Комплексная автоматизация</h3>
+        <p>Полный запуск учёта «под ключ» для новых точек: от кассы до отчётности.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <h2>Работаем локально и по делу</h2>
+        <p>Мы находимся в Мариуполе и хорошо понимаем, с какими задачами сталкивается местный бизнес.</p>
+        <p>Не продаём «решения ради решений». Сначала разбираемся в вашей ситуации, потом предлагаем конкретные шаги.</p>
+        <div class="about-note">
+          Официальный представитель СБИС в Мариуполе. Можем приехать на точку, настроить оборудование и обучить сотрудников на месте.
+        </div>
+      </div>
+      <div>
+        <h2>С кем обычно работаем</h2>
+        <ul>
+          <li>Продуктовые и непродовольственные магазины</li>
+          <li>Кафе, рестораны, фастфуд</li>
+          <li>Салоны красоты и сфера услуг</li>
+          <li>Автосервисы и магазины запчастей</li>
+          <li>Склады и небольшое производство</li>
+          <li>Новые точки, которым нужно всё настроить с нуля</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div>
+        <h2>Давайте обсудим вашу задачу</h2>
+        <p>Напишите или позвоните — расскажем, что можно сделать в вашей ситуации и сколько это примерно займёт времени.</p>
+        <a href="tel:+79497022181" class="btn">Позвонить</a>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item">
+          <span>Телефон</span>
+          <a href="tel:+79497022181">+7 (949) 702-21-81</a>
+        </div>
+        <div class="contact-item">
+          <span>Telegram</span>
+          <a href="https://t.me/finansist_mrpl" target="_blank">@finansist_mrpl</a>
+        </div>
+        <div class="contact-item">
+          <span>Email</span>
+          <a href="mailto:finansist.mrpl@yandex.ru">finansist.mrpl@yandex.ru</a>
+        </div>
+        <div class="contact-item">
+          <span>Адрес</span>
+          <strong>Мариуполь, пр. Ленина, 54/46</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 Консалтинговое агентство «Финансист» · Мариуполь
+  </div>
+</footer>
+
+</body>
+</html>
